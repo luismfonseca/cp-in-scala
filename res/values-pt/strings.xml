@@ -1,0 +1,33 @@
+<resources>
+
+    <string name="app_name">CP</string>
+    <string name="title_section1">Pesquisar</string>
+    <string name="title_section2">Favoritos</string>
+    <string name="title_section3">Recentes</string>
+    <string name="title_section4">Notícias &amp; Avisos</string>
+    <string name="title_section5">myCP</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Definições</string>
+    <string name="menu_about">Sobre</string>
+    <string name="title_activity_main">Comboios de Portugal</string>
+    <string name="search_from">Partida</string>
+    <string name="search_to">Chegada</string>
+    <string name="search_text">Pesquise aqui horários e preços. Faça a simulação da sua viagem.</string>
+    <string name="search_day">DIA</string>
+    <string name="date_format">d.MMMM</string>
+    <string name="date_format_fill">de</string>
+    <string name="search_button_get_trains">OBTER COMBOIOS</string>
+    <string name="search_toast_from">Por favor escreva a estação de partida.</string>
+    <string name="search_toast_to">Por favor escreva a estação de chegada.</string>
+    <string name="search_toast_different">Chegou ao seu destino.</string>
+    <string name="toast_no_internet">Não foi possível obter uma ligação de dados.</string>
+    
+    <string-array name="train_type_array">
+        <item>Todos os comboios</item>
+        <item>Alfa-Pendular</item>
+        <item>Intercidade</item>
+        <item>Interregional</item>
+        <item>Regional</item>
+        <item>Urbano</item>
+    </string-array>
+</resources>
