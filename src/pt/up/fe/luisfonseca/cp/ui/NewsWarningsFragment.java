@@ -43,8 +43,8 @@ public class NewsWarningsFragment extends Fragment
         mNewsLoader = new NewsLoader(new ResponseHandler<News>() {
 			
 			public void onResultReceived(News results) {
-				for(News.NewItem n : results.news)
-					mNewsAdapter.add(n.title);
+				//for(News.NewItem n : results.news())
+				//	mNewsAdapter.add(n.title);
 
 				mNewsAdapter.notifyDataSetChanged();
 			}
@@ -56,8 +56,8 @@ public class NewsWarningsFragment extends Fragment
         mWarningsLoader = new WarningsLoader(new ResponseHandler<Warnings>() {
 
 			public void onResultReceived(Warnings results) {
-				for(Warnings.WarningItem w : results.today)
-					mWarningsAdapter.add(w.title);
+				//for(Warnings.WarningItem w : results.today)
+				//	mWarningsAdapter.add(w.title);
 				
 				mWarningsAdapter.notifyDataSetChanged();
 			}
@@ -67,6 +67,8 @@ public class NewsWarningsFragment extends Fragment
 			}
 
 		});
+        mNewsLoader.execute();
+        mWarningsLoader.execute();
 
         View v = inflater.inflate(R.layout.fragment_newswarnings, container, false);
 

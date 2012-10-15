@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import pt.up.fe.luisfonseca.cp.api.ResponseHandler;
 import pt.up.fe.luisfonseca.cp.api.StationsLoader;
 import pt.up.fe.luisfonseca.util.ArrayAdapterStartsWith;
+import scala.collection.immutable.List;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class SearchFragment extends Fragment
-	implements OnMenuItemClickListener, ResponseHandler<String[]>
+	implements OnMenuItemClickListener, ResponseHandler<List<String>>
 {
 	
 	AutoCompleteTextView mAutocompleteSearchFrom,
@@ -49,6 +50,7 @@ public class SearchFragment extends Fragment
 	
     public SearchFragment() {
     	mStationsLoader = new StationsLoader(this);
+    	mStationsLoader.execute();
     }
 
     public static final String ARG_SECTION_NUMBER = "section_number";
@@ -115,11 +117,11 @@ public class SearchFragment extends Fragment
 	}
 
 
-	public void onResultReceived(String[] results) {
+	public void onResultReceived(List<String> results) {
 		ArrayAdapterStartsWith<Object> aAdapter = new ArrayAdapterStartsWith<Object>(
 				getActivity(),
 				android.R.layout.simple_list_item_1,
-				results);
+				new String[] {"porto", "lisboa"});
 
 		mAutocompleteSearchFrom.setAdapter(aAdapter);
 		mAutocompleteSearchTo.setAdapter(aAdapter);
