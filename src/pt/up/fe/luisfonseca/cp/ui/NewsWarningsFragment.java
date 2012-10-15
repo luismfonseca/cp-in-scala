@@ -7,6 +7,7 @@ import pt.up.fe.luisfonseca.cp.api.ResponseHandler;
 import pt.up.fe.luisfonseca.cp.api.WarningsLoader;
 import pt.up.fe.luisfonseca.cp.api.json.News;
 import pt.up.fe.luisfonseca.cp.api.json.Warnings;
+import scala.Enumeration.Value;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
@@ -40,30 +41,18 @@ public class NewsWarningsFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNewsLoader = new NewsLoader(new ResponseHandler<News>() {
-			
-			public void onResultReceived(News results) {
-				//for(News.NewItem n : results.news())
-				//	mNewsAdapter.add(n.title);
-
-				mNewsAdapter.notifyDataSetChanged();
-			}
-			
-			public void onError(ERROR_TYPE error) {
-				
-			}
-		});
+        mNewsLoader = new NewsLoader(new ResponseHandlerImplementation());
+        
         mWarningsLoader = new WarningsLoader(new ResponseHandler<Warnings>() {
-
-			public void onResultReceived(Warnings results) {
+    		public void onError(Value error) {
+    			// TODO Auto-generated method stub
+    		}
+    		
+    		public void onResultReceived(Warnings result) {
 				//for(Warnings.WarningItem w : results.today)
 				//	mWarningsAdapter.add(w.title);
 				
 				mWarningsAdapter.notifyDataSetChanged();
-			}
-			
-			public void onError(ResponseHandler.ERROR_TYPE error) {
-				
 			}
 
 		});
@@ -98,6 +87,22 @@ public class NewsWarningsFragment extends Fragment
 	public void onTabUnselected(Tab tab, FragmentTransaction arg1) {
 	}
 	
+
+	private final class ResponseHandlerImplementation implements
+			ResponseHandler<News> {
+		public void onError(Value error) {
+			// TODO Auto-generated method stub
+		}
+		
+		public void onResultReceived(News result) {
+			//for(News.NewItem n : results.news())
+			//	mNewsAdapter.add(n.title);
+
+			mNewsAdapter.notifyDataSetChanged();
+			
+		}
+	}
+
 
 	public class DemoCollectionPagerAdapter extends FragmentPagerAdapter {
 	    public DemoCollectionPagerAdapter(FragmentManager fm) {

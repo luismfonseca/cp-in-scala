@@ -3,11 +3,12 @@ package pt.up.fe.luisfonseca.cp.ui;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import pt.up.fe.luisfonseca.cp.api.ResponseHandler;
 import pt.up.fe.luisfonseca.cp.api.StationsLoader;
 import pt.up.fe.luisfonseca.util.ArrayAdapterStartsWith;
-import scala.collection.immutable.List;
+import scala.Enumeration.Value;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
@@ -49,8 +50,8 @@ public class SearchFragment extends Fragment
 	
 	
     public SearchFragment() {
-    	mStationsLoader = new StationsLoader(this);
-    	mStationsLoader.execute();
+    	//mStationsLoader = new StationsLoader(this);
+    	//mStationsLoader.execute();
     }
 
     public static final String ARG_SECTION_NUMBER = "section_number";
@@ -111,11 +112,10 @@ public class SearchFragment extends Fragment
         return v;
     }
 
-	public void onError(ResponseHandler.ERROR_TYPE error) {
+	public void onError(Value error) {
 		Toast.makeText(this.getActivity(), getString(R.string.toast_no_internet), Toast.LENGTH_SHORT)
 		 .show();
 	}
-
 
 	public void onResultReceived(List<String> results) {
 		ArrayAdapterStartsWith<Object> aAdapter = new ArrayAdapterStartsWith<Object>(
@@ -131,7 +131,7 @@ public class SearchFragment extends Fragment
 	public void onStop()
 	{
 		super.onStop();
-		mStationsLoader.cancel(true);
+		//mStationsLoader.cancel(true);
 	}
 
 
@@ -168,4 +168,5 @@ public class SearchFragment extends Fragment
 		startActivity(i);
 		return true;
 	}
+
 }
