@@ -12,14 +12,14 @@ import scala.io.Source
 
 object CP {
 	private val CPwebserver = "http://paginas.fe.up.pt/~ei10139/cp/"
-    val URLstations = CPwebserver + "getStations.php";
-    val URLnews = CPwebserver + "getNews.php";
-    val URLwarnings = CPwebserver + "getWarnings.php";
-    val URLlogin = CPwebserver + "doLogin.php?email=%s&password=%s";
-    val URLsearchTimetable = CPwebserver + "searchTimetable.php?%s";
-    val URLgetTimetableDetalil = CPwebserver + "getDetailTimetable.php?queryID=%s&selectedSolution=%s";
-    val URLnewUser = CPwebserver + "newUser.php?%s";
-    val URLrecoverpw = CPwebserver + "recoverPassword.php?email=%s";
+    val URLstations = CPwebserver + "getStations.php"
+    val URLnews = CPwebserver + "getNews.php"
+    val URLwarnings = CPwebserver + "getWarnings.php"
+    val URLlogin = CPwebserver + "doLogin.php?email=%s&password=%s"
+    val URLsearchTimetable = CPwebserver + "searchTimetable.php?%s"
+    val URLgetTimetableDetalil = CPwebserver + "getDetailTimetable.php?queryID=%s&selectedSolution=%s"
+    val URLnewUser = CPwebserver + "newUser.php?%s"
+    val URLrecoverpw = CPwebserver + "recoverPassword.php?email=%s"
 
     def get(url: String): HttpURLConnection = {
         try {
@@ -76,9 +76,9 @@ object CP {
      */
     def getPage(in: InputStream, encoding: String): String =
     {
-        val result = Source.fromInputStream(in).getLines().mkString("\n")
-        in.close();
-        return result
+        val result = Source.fromInputStream(in, encoding).getLines.mkString("\n")
+        in.close
+        result
     }
     
     

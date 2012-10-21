@@ -8,7 +8,7 @@ import pt.up.fe.luisfonseca.cp.api.json.NewItem
 class NewsLoader(handler: ResponseHandler[News])
 	extends RetrieveTask[News](handler, new NewsParser())
 {
-	def execute = super.execute(CP.URLnews);
+	def execute = super.execute(CP.URLnews)
 }
 
 class NewsParser extends JsonParser[News]

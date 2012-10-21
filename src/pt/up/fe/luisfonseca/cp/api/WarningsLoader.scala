@@ -8,7 +8,7 @@ import org.json.JSONArray
 class WarningsLoader(val handler: ResponseHandler[Warnings])
 	extends RetrieveTask[Warnings](handler, new WarningsParser())
 {
-	def execute = super.execute(CP.URLwarnings);
+	def execute = super.execute(CP.URLwarnings)
 }
 
 class WarningsParser extends JsonParser[Warnings]

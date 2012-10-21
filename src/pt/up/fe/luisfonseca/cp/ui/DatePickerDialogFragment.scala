@@ -10,10 +10,10 @@ import android.app.Dialog
 class DatePickerDialogFragment(mDateSetListener: OnDateSetListener) extends DialogFragment {
 
 	override def onCreateDialog(savedInstanceState: Bundle) : Dialog = {
-		val cal = Calendar.getInstance();
+		val cal = Calendar.getInstance()
 
 		return new DatePickerDialog(getActivity(),
 				mDateSetListener, cal.get(Calendar.YEAR), 
-				cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+				cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
 	}
 }
